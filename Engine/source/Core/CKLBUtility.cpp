@@ -335,7 +335,7 @@ CKLBUtility::loadAsset(const char * asset, u32 * handle, IKLBAssetPlugin* plugIn
 		if(temp == NULL)
 			return NULL;
 
-		*handle = CKLBDataHandler::allocateHandle(temp);
+		if (handle) *handle = CKLBDataHandler::allocateHandle(temp);
 
 		return dynamic_cast<CKLBTextureAsset*>(temp)->getImage(pAssetManager.placeholder_path + 8);
 	}
