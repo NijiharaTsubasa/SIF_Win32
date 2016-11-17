@@ -427,11 +427,5 @@ void CKLBScriptEnv::call_Mdl(const char* callback, const char* filename, const c
 
 	(void)url;
 
-	if(filename == NULL)
-		lua.callback(callback, "PSPI", NULL, url, NULL, 0);
-	else
-		lua.callback(callback, "SSPI", filename, url, NULL, 1);
-
-	luaL_loadstring(lua.m_L, "import(\"NowAssetLoading\").finish()");
-	DEBUG_PRINT("Mdl: lua_pcall returns %d", lua_pcall(lua.m_L, 0, 0, 0));
+	lua.callback(callback, "PSSII", NULL, url, filename, 1, 1);
 }

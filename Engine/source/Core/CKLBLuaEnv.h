@@ -49,7 +49,7 @@ public:
 	bool intoMaintenance	();
 	bool exitMaintenance	();
 
-	void call_assetNotFound	(const char* funcname, const char* handler);
+	void call_assetNotFound	(const char* funcname, const char* file);
 
     void errMsg				(const char * str);
     

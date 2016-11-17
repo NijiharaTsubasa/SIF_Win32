@@ -67,6 +67,8 @@ public:
 		// CKLBLabelNode 対象コマンド
 		FORM_LBL_SET_TEXT,		// ラベルのテキスト変更
 		FORM_LBL_GET_TEXT,		// ラベルのテキスト取得
+		FORM_LBL_SET_COLOR,
+		FORM_LBL_SET_TEXTELLIPSIS
 	};
 
 	CKLBFormIF(CKLBTask * pOwner = 0);

@@ -404,6 +404,12 @@ CKLBLuaEnv::command(lua_State *L)
 
 		if(IsDebuggerPresent()) DebugBreak();
 	}
+
+	if(!lua.isNum(2))
+	{
+		lua.print_stack();
+		if(IsDebuggerPresent()) __debugbreak();
+	}
     CKLBLuaTask * pTask = (CKLBLuaTask *)lua.getPointer(1);
     if(!pTask) return 0;
 	CHECKTASK(pTask);
@@ -998,9 +1004,9 @@ CKLBLuaEnv::cmdExit()
 	CKLBTaskMgr::getInstance().setExit(); 
 }
 
-void CKLBLuaEnv::call_assetNotFound(const char* a, const char* b)
+void CKLBLuaEnv::call_assetNotFound(const char* funcname, const char* file)
 {
 	CLuaState lua(m_L);
 
-	lua.callback(a, "SS", b + 8, b);
+	lua.callback(funcname, "SS", file + 8, file);
 }

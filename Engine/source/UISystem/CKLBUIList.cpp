@@ -82,6 +82,7 @@ enum {
 	UI_LIST_GET_ITEMCOUNT,	// Get Count List Item.
 	UI_LIST_GET_ITEMFORM,	// Return a form object if exist for a given item.
 	UI_LIST_SET_DRAGMINDISTANCE, //
+	UI_LIST_SET_DYNAMICMARGIN = 45
 };
 // コントロール用値
 enum {
@@ -161,6 +162,7 @@ static IFactory::DEFCMD cmd[] = {
 	{ "UI_LIST_GET_ITEMFORM",			UI_LIST_GET_ITEMFORM },
 
 	{ "UI_LIST_SET_DRAGMINDISTANCE",	UI_LIST_SET_DRAGMINDISTANCE },
+	{ "UI_LIST_SET_DYNAMICMARGIN",		UI_LIST_SET_DYNAMICMARGIN	},
 
 	{ "LIST_VIEW_TOP",					LIST_VIEW_TOP },
 	{ "LIST_VIEW_CENTER",				LIST_VIEW_CENTER },
@@ -1452,6 +1454,9 @@ CKLBUIList::commandUI(CLuaState& lua, int argc, int cmd)
 			// Return only positive value, else scroll would become impossible.
 			m_dragDistance = (v < 0) ? 0 : v;	
 		}
+		break;
+	case UI_LIST_SET_DYNAMICMARGIN:
+		// TODO
 		break;
 	case UI_LIST_USE_SCROLLBAR:
 		if(argc >= 13 && argc <= 15) {

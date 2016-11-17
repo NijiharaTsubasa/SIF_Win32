@@ -433,7 +433,7 @@ CKLBAssetManager::loadAsset(u8* stream, u32 streamSize, CKLBAbstractAsset** ppAs
 				bool result = loadAssetStream(pStream, ppAsset,0,useAsync);
 				delete pStream;	// DO NOT USE KLBDELETE : platform use "new"
 
-				if(result == false)
+				if(result == false && notfound_handler)
 				{
 					CKLBLuaEnv& x = CKLBLuaEnv::getInstance();
 					x.call_assetNotFound(notfound_handler, fileName);
